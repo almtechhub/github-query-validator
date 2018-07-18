@@ -5,7 +5,7 @@
   "main": "dist/QueryValidator.js",
   "types" : "dist/QueryValidator.d.ts",
   "files": [
-    "dist",
+    "dist"
   ],
   "scripts": {
     "test": "jest",
