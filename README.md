@@ -49,8 +49,8 @@ console.log(queryObjValidator(qObj2)); // true
 
 ### validUserName
 
-Typing
 ```typescript
+// Types
 declare const validUserName: (usrnm: string) => boolean;
 ```
 
