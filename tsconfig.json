@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "downlevelIteration": true,
+      "removeComments": true,
+      "strictPropertyInitialization": false,
+      "target": "es5",
+      "module": "commonjs",
+      "lib": ["es5","es6","es7"],
+      "outDir": "dist",
+      "declaration": true,
+      "strict": true,
+      "watch": false
+    },
+    "include": [
+      "src/QueryValidator.ts"
+    ]
+}
+  

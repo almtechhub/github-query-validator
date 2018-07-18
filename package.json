@@ -1,0 +1,36 @@
+{
+  "name": "github-query-validator",
+  "version": "0.1.0",
+  "description": "A set of functions that will thoroughly validate a github api query.",
+  "main": "dist/QueryValidator.js",
+  "types" : "dist/QueryValidator.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALMaclaine/github-query-validator.git"
+  },
+  "keywords": [
+    "Github",
+    "Api",
+    "Query",
+    "Validator"
+  ],
+  "author": "Alessandro Maclaine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ALMaclaine/github-query-validator/issues"
+  },
+  "homepage": "https://github.com/ALMaclaine/github-query-validator#readme",
+  "devDependencies": {
+    "typescript": "^2.9.2",
+    "@types/jest": "^23.3.0",
+    "jest": "^23.4.1",
+    "ts-jest": "^23.0.1"
+  },
+  "dependencies": {
+    "@types/node": "^10.5.2"
+  }
+}
