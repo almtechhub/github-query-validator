@@ -49,6 +49,77 @@ Keep in mind the 'addl' property is not part of the github api, it is the librar
 
 ## Exported Functions
 
+### queryValidator
+
+Validates a query string, by default throws error on invalid and returns true on valid, can pass flag to return false instead of throwing error. Function works by splitting query string into QueryObject and validates the QueryObject using queryObjValidator.
+
+```typescript
+declare const queryValidator: (q: string, throwOnErr?: boolean) => boolean;
+```
+
+```javascript
+import { queryValidator } from "github-query-validator";
+queryValidator("Query String user:user1 org:user1"); // true
+queryValidator("Query String user:user1 dogs:user1"); // throw error
+queryValidator("Query String user:user1 dogs:user1", false); // false
+```
+
+### queryObjValidator
+
+Validates a QueryObject, by default throws error on invalid and returns true on valid, can pass flag to return false instead of throwing error.
+
+```typescript
+declare const queryObjValidator: (qObj: QueryObject, throwOnErr?: boolean) => boolean;
+```
+
+```javascript
+import { queryObjValidator } from "github-query-validator";
+const qObj = {
+    addl: "Query String",
+    user: "user1",
+    org: "user1"
+}
+queryObjValidator(qObj); // true
+queryObjValidator({}); // throw error
+queryObjValidator({}, false); // false
+```
+
+### queryStringToObj
+
+Converts a query string into a QueryObject
+
+```typescript
+declare const queryStringToObj: (q: string) => QueryObject;
+```
+
+```javascript
+import { queryStringToObj } from "github-query-validator";
+queryStringToObj("Query String user:user1 org:user1");
+// const qObj = {
+//     addl: "Query String",
+//     user: "user1",
+//     org: "user1"
+// }
+```
+
+### queryObjToString
+
+Converts a QueryObject to query string.
+
+```typescript
+declare const queryObjToString: (qObj: QueryObject, throwOnErr?: boolean) => string;
+```
+
+```javascript
+import { queryObjToString } from "github-query-validator";
+const qObj = {
+    addl: "Query String",
+    user: "user1",
+    org: "user1"
+}
+queryObjToString(qObj); // Query String user:user1 org:user1
+```
+
 ### validUserName
 
 Validates github user names, which are 38 digit alpha-numeric or dashes, but cannot begin with a dash.
@@ -356,3 +427,39 @@ import { validIs } from "github-query-validator";
 validIs("public"); // true
 validIs("07/12"); // false
 ```
+
+### validKey
+
+Validates a property as valid
+accepts one of:
+>"user", "org", "in", "size", "fork", "forks", "stars", "created", "pushed", "language", "topic", "topics", "license", "is", "mirror", "archived", "addl"
+
+```typescript
+declare const validKey: (key: string) => boolean;
+```
+
+```javascript
+import { validKey } from "github-query-validator";
+validIs("created"); // true
+validIs("dog"); // false
+```
+
+### validKeys
+
+Validates the keys of a QueryObject.
+
+```typescript
+declare const validKeys: (qObj: QueryObject) => boolean;
+```
+
+```javascript
+import { validKeys } from "github-query-validator";
+const qObj = {
+    addl: "Query String",
+    user: "user1",
+    org: "user1",
+    in: "description"
+}
+validKeys(qObj); // true
+```
+
