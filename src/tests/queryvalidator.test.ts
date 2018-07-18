@@ -16,6 +16,7 @@ import {
   validMirror, 
   validArchived,
   validAddl,
+  validKey,
   validKeys,
   queryObjValidator,
   queryValidator,
@@ -41,6 +42,24 @@ test('validKeys', () => {
   validProps = ["-usder", "-orag", "-idn", "-sized", "-forkds", "-stards", "-credated", "-pushded",
   "-langfuage", "-topaic", "-topsics", "-licensfe", "-ias", "-mirrodr", "-archisved", "-addsl"];
   expect(validKeys(validProps.reduce((a, c) => { a[c] = c; return a; }, {}))).toBe(false);
+});
+
+test('validKeys', () => {
+  let validProps = ["user", "org", "in", "size", "forks", "stars", "created", "pushed",
+  "language", "topic", "topics", "license", "is", "mirror", "archived", "addl"];
+  expect(validProps.map(e => validKey(e)).every(e => e === true)).toBe(true)
+
+  validProps = ["-user", "-org", "-in", "-size", "-forks", "-stars", "-created", "-pushed",
+  "-language", "-topic", "-topics", "-license", "-is", "-mirror", "-archived", "-addl"];
+  expect(validProps.map(e => validKey(e)).every(e => e === true)).toBe(true)
+
+  validProps = ["uscer", "orsg", "ifn", "sifze", "forkss", "stasrs", "crdeated", "pudshed",
+  "languaage", "topsic", "topicds", "liacense", "ids", "mirraor", "archivded", "adadl"];
+  expect(validProps.map(e => validKey(e)).every(e => e === false)).toBe(true)
+
+  validProps = ["-usder", "-orag", "-idn", "-sized", "-forkds", "-stards", "-credated", "-pushded",
+  "-langfuage", "-topaic", "-topsics", "-licensfe", "-ias", "-mirrodr", "-archisved", "-addsl"];
+  expect(validProps.map(e => validKey(e)).every(e => e === false)).toBe(true)
 });
 
 test('validUserName', () => {

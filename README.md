@@ -45,6 +45,8 @@ const qObj2 = queryStringToObj(query);
 console.log(queryObjValidator(qObj2)); // true
 ```
 
+Keep in mind the 'addl' property is not part of the github api, it is the library representation of the actual query without any properties.
+
 ## Exported Functions
 
 ### validUserName
@@ -75,4 +77,282 @@ declare const validOrgName: (usrnm: string) => boolean;
 import { validUserName } from "github-query-validator";
 validUserName("org23");  // true
 validUserName("-org123"); // false
+```
+
+### validIn
+
+Validates the 'in' property for github api queries. Comma seperated list of 'description', 'name', 'readme'.
+
+```typescript
+declare const validIn: (inn: string) => boolean;
+```
+
+```javascript
+import { validIn } from "github-query-validator";
+validIn("description"); // true
+validIn("description,readme"); // true
+validIn("dog,cat"); // false
+```
+
+### validStars
+
+Validates the 'stars' property for github api queries. Formated as:
+
+- \#\#\#
+- <###
+- <=###
+- \>###
+- \>=###
+- ##..*
+- *..##
+- #..#
+
+```typescript
+declare const validStars: (stars: string) => boolean;
+```
+
+```javascript
+import { validStars } from "github-query-validator";
+validStars("<=123"); // true
+validStars("324...432"); // true
+validStars("#@d#3$"); // false
+```
+
+### validForks
+
+Validates the 'forks' property for github api queries. Formated as:
+
+- \#\#\#
+- <###
+- <=###
+- \>###
+- \>=###
+- ##..*
+- *..##
+- #..#
+
+```typescript
+declare const validForks: (forks: string) => boolean;
+```
+
+```javascript
+import { validForks } from "github-query-validator";
+validForks("<=123"); // true
+validForks("324...432"); // true
+validForks("#@d#3$"); // false
+```
+
+### validFork
+
+Validates the 'fork' property for github api queries. One of, true, false, 'true', 'false', 'only'.
+
+```typescript
+declare const validFork: (fork: string | boolean) => boolean;
+```
+
+```javascript
+import { validFork } from "github-query-validator";
+validFork(true); // true
+validFork('true'); // true
+validFork('false'); // true
+validFork('only'); // true
+validFork('D@2@g4'); // true
+```
+
+### validStars
+
+Validates the 'stars' property for github api queries. Formated as:
+
+- \#\#\#
+- <###
+- <=###
+- \>###
+- \>=###
+- ##..*
+- *..##
+- #..#
+
+```typescript
+declare const validStars: (stars: string) => boolean;
+```
+
+```javascript
+import { validStars } from "github-query-validator";
+validStars("<=123"); // true
+validStars("324...432"); // true
+validStars("#@d#3$"); // false
+```
+
+### validTopics
+
+Validates the 'topics' property for github api queries. Formated as:
+
+- \#\#\#
+- <###
+- <=###
+- \>###
+- \>=###
+- ##..*
+- *..##
+- #..#
+
+```typescript
+declare const validTopics: (topics: string) => boolean;
+```
+
+```javascript
+import { validTopics } from "github-query-validator";
+validTopics("<=123"); // true
+validTopics("324...432"); // true
+validTopics("#@d#3$"); // false
+```
+
+### validLang
+
+Validates the 'language' property for github api queries. Aceepts any string.
+
+```typescript
+declare const validLang: (lang: string) => boolean;
+```
+
+```javascript
+import { validLang } from "github-query-validator";
+validLang("c++"); // true
+validLang("python"); // true
+validLang(3); // false
+```
+
+### validTopic
+
+Validates the 'topic' property for github api queries. Aceepts any string.
+
+```typescript
+declare const validTopic: (topic: string) => boolean;
+```
+
+```javascript
+import { validTopic } from "github-query-validator";
+validTopic("c++"); // true
+validTopic("python"); // true
+validTopic(3); // false
+```
+
+### validAddl
+
+Validates the 'addl' property, not part of github api, how the library handles additional input. Aceepts any string.
+
+```typescript
+declare const validAddl: (addl: string) => boolean;
+```
+
+```javascript
+import { validAddl } from "github-query-validator";
+validAddl("c++"); // true
+validAddl("python"); // true
+validAddl(3); // false
+```
+
+### validLicense
+
+Validates the 'license' property for github api queries. Will accept any of the licenses found on this [page](https://help.github.com/articles/licensing-a-repository/#searching-github-by-license-type) (as of 7/18/18).
+
+```typescript
+declare const validLicense: (lice: string) => boolean;
+```
+
+```javascript
+import { validLicense } from "github-query-validator";
+validTopic("mit"); // true
+validTopic("afl-3.0"); // true
+validTopic("ASD"); // false
+```
+
+### validCreated
+
+Validates the 'created' property for github api queries. For all formats accepted visit this [page](https://help.github.com/articles/understanding-the-search-syntax/#query-for-dates).
+
+```typescript
+declare const validCreated: (created: string) => boolean;
+```
+
+```javascript
+import { validCreated } from "github-query-validator";
+validCreated("2018-05-12T21"); // true
+validCreated("2018-05-12T21:21:21Z"); // true
+validCreated("07/12"); // false
+```
+
+### validPushed
+
+Validates the 'pushed' property for github api queries. For all formats accepted visit this [page](https://help.github.com/articles/understanding-the-search-syntax/#query-for-dates).
+
+```typescript
+declare const validPushed: (pushed: string) => boolean;
+```
+
+```javascript
+import { validPushed } from "github-query-validator";
+validPushed("2018-05-12T21"); // true
+validPushed("2018-05-12T21:21:21Z"); // true
+validPushed("07/12"); // false
+```
+
+### validMirror
+
+Validates the 'mirror' property for github api queries. Takes one of true, false, 'true', 'false'.
+
+```typescript
+declare const validMirror: (mirr: string | boolean) => boolean;
+```
+
+```javascript
+import { validMirror } from "github-query-validator";
+validMirror(true); // true
+validMirror(false); // true
+validMirror("false"); // true
+validMirror("07/12"); // false
+```
+
+### validArchived
+
+Validates the 'archived' property for github api queries. Takes one of true, false, 'true', 'false'.
+
+```typescript
+declare const validArchived: (arch: string | boolean) => boolean;
+```
+
+```javascript
+import { validMirror } from "github-query-validator";
+validMirror(true); // true
+validMirror(false); // true
+validMirror("false"); // true
+validMirror("07/12"); // false
+```
+
+### validIs
+
+Validates the 'is' property for github api queries. Takes one of 'public' or 'private'.
+
+```typescript
+declare const validIs: (is: string) => boolean;
+```
+
+```javascript
+import { validIs } from "github-query-validator";
+validIs("public"); // true
+validIs("07/12"); // false
+```
+
+### validIs
+
+Validates the 'is' property for github api queries. Takes one of 'public' or 'private'.
+
+```typescript
+declare const validIs: (is: string) => boolean;
+```
+
+```javascript
+import { validIs } from "github-query-validator";
+validIs("public"); // true
+validIs("07/12"); // false
 ```

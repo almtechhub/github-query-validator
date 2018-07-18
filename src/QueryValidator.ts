@@ -253,6 +253,7 @@ export {
     validMirror, 
     validArchived,
     validAddl,
+    validKey,
     validKeys,
     queryObjValidator,
     queryValidator,
