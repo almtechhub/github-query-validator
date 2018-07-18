@@ -384,10 +384,17 @@ test("validIn", () => {
   expect(validIn("description")).toBe(true);
   expect(validIn("name")).toBe(true);
   expect(validIn("readme")).toBe(true);
+  expect(validIn("readme,description")).toBe(true);
+  expect(validIn("name,description")).toBe(true);
+  expect(validIn("description,name")).toBe(true);
+  expect(validIn("name,description,readme")).toBe(true);
+  expect(validIn("readme,name,description")).toBe(true);
+  expect(validIn("name,readme,description")).toBe(true);
 
   expect(validIn("rer")).toBe(false);
   expect(validIn("gse")).toBe(false);
   expect(validIn("@")).toBe(false);
+  expect(validIn("name,description,dog")).toBe(false);
 });
 
 test("validLang", () => {

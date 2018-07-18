@@ -49,6 +49,8 @@ console.log(queryObjValidator(qObj2)); // true
 
 ### validUserName
 
+Validates github user names, which are 38 digit alpha-numeric or dashes, but cannot begin with a dash.
+
 ```typescript
 // Types
 declare const validUserName: (usrnm: string) => boolean;
@@ -58,4 +60,19 @@ declare const validUserName: (usrnm: string) => boolean;
 import { validUserName } from "github-query-validator";
 validUserName("git123");  // true
 validUserName("-git123"); // false
+```
+
+### validOrgName
+
+Validates github org names, which are 38 digit alpha-numeric or dashes, but cannot begin with a dash.
+
+```typescript
+// Types
+declare const validOrgName: (usrnm: string) => boolean;
+```
+
+```javascript
+import { validUserName } from "github-query-validator";
+validUserName("org23");  // true
+validUserName("-org123"); // false
 ```

@@ -69,8 +69,11 @@ const validTopics = function validTopics(topics: string) : boolean {
 }
 
 // Validates in
-const validIn = function validIn(val: string) : boolean {
-    return (val === "description") || (val === "name") || (val === "readme");
+const validIn = function validIn(inn: string) : boolean {
+    const vals = inn.split(",");
+    return vals.every(val => {
+        return (val === "description") || (val === "name") || (val === "readme");
+    });
 }
 
 // Validates lang
