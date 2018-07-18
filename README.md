@@ -35,8 +35,7 @@ console.log(queryObjValidator(qObj)); // true
 
 const query = queryObjToString(qObj);
 
-// Query String user:user1 org:user1 in:description...
-console.log(query);
+console.log(query); // Query String user:user1 org:user1 in:des...
 
 console.log(queryValidator(query)); // true
 
