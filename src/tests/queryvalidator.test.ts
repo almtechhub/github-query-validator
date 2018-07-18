@@ -8,7 +8,6 @@ import {
   validSize,
   validCreated,
   validPushed,
-  validUpdated,
   validLang,
   validTopic,
   validTopics,
@@ -320,56 +319,6 @@ test("validPushed", () => {
   expect(validPushed("2012-07-07T21:21Z+99")).toBe(false);
   expect(validPushed("2012-07-07T21Z+99:99")).toBe(false);
   expect(validPushed("2012-07-07T21:21Z+99:99")).toBe(false);
-});
-
-test("validUpdated", () => {
-  expect(validUpdated("2012")).toBe(true);
-  expect(validUpdated("2012-07")).toBe(true);
-  expect(validUpdated("2012-07-07")).toBe(true);
-  expect(validUpdated("2012-07-07")).toBe(true);
-  expect(validUpdated("2012-07-07T21")).toBe(true);
-  expect(validUpdated("2012-07-07T21+99")).toBe(true);
-  expect(validUpdated("2012-07-07T21:21")).toBe(true);
-  expect(validUpdated("2012-07-07T21+99")).toBe(true);
-  expect(validUpdated("2012-07-07T21:21:21")).toBe(true);
-  expect(validUpdated("2012-07-07T21:21:21Z")).toBe(true);
-  expect(validUpdated("2012-07-07T21:21:21Z+99")).toBe(true);
-  expect(validUpdated("2012-07-07T21:21:21+99")).toBe(true);
-  expect(validUpdated("2012-07-07T21+99")).toBe(true);
-  expect(validUpdated("2012-07-07T21:21+99")).toBe(true);
-  expect(validUpdated("2012-07-07T21:21:21Z+99:99")).toBe(true);
-  expect(validUpdated("2012-07-07T21:21:21+99:99")).toBe(true);
-  expect(validUpdated("2012-07-07T21+99:99")).toBe(true);
-  expect(validUpdated("2012-07-07T21:21+99:99")).toBe(true);
-
-  expect(validUpdated("2012-")).toBe(false);
-  expect(validUpdated("2012-0")).toBe(false);
-  expect(validUpdated("2012-07-")).toBe(false);
-  expect(validUpdated("2012-07-0")).toBe(false);
-  expect(validUpdated("2012-07-07T")).toBe(false);
-  expect(validUpdated("2012-07-07T2")).toBe(false);
-  expect(validUpdated("2012-07-07T21:")).toBe(false);
-  expect(validUpdated("2012-07-07T21:2")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21:")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21:2")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21:21Z+")).toBe(false);
-  expect(validUpdated("2012-07-07T21Z+9")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21Z+99+")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21:21+99+")).toBe(false);
-  expect(validUpdated("2012-07-07T21+99+")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21+99+")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21:21Z+99:99+")).toBe(false);
-  expect(validUpdated("2012-07-07T21Z+99:99+")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21Z+")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21:21+:99")).toBe(false);
-  expect(validUpdated("2012-07-07T21+99:99+")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21+99:99+")).toBe(false);
-  expect(validUpdated("2012-07-07T21Z")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21Z")).toBe(false);
-  expect(validUpdated("2012-07-07T21Z+99")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21Z+99")).toBe(false);
-  expect(validUpdated("2012-07-07T21Z+99:99")).toBe(false);
-  expect(validUpdated("2012-07-07T21:21Z+99:99")).toBe(false);
 });
 
 test("validCreated", () => {

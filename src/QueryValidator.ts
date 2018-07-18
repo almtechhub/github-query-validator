@@ -33,66 +33,74 @@ const validRange = function validRange(rng: string) : boolean {
     return reg.test(rng);
 }
 
+// Validates usernames
 const validUserName = function validUserName(usrnm: string) : boolean {
     return validGitName(usrnm);
 }
 
+// Validates organizations
 const validOrgName = function validOrgName(usrnm: string): boolean {
     return validGitName(usrnm);
 }
 
+// Validates size
 const validSize = function validSize(size: string) : boolean {
     return validRange(`${size}`);
 }
 
+// Validates forks
 const validForks = function validForks(forks: string) : boolean {
     return validRange(`${forks}`);
 }
 
+// Validates fork
 const validFork = function validFork(fork: string | boolean) : boolean {
-    return (fork === "true")  || (fork === true) 
-        || (fork === "false") || (fork === false)
-        || (fork === "only");
+    return validBool(fork) || (fork === "only");
 }
 
+// Validates stars
 const validStars = function validStars(stars: string) : boolean {
     return validRange(`${stars}`);
 }
 
+// Validates topics
 const validTopics = function validTopics(topics: string) : boolean {
     return validRange(`${topics}`);
 }
 
+// Validates in
 const validIn = function validIn(val: string) : boolean {
     return (val === "description") || (val === "name") || (val === "readme");
 }
 
+// Validates lang
 const validLang = function validLang(lang: string) : boolean {
     return validString(lang);
 }
 
+// Validates topic
 const validTopic = function validTopic(topic: string) : boolean {
     return validString(topic);
 }
 
+// Validates additional
 const validAddl = function validAddl(addl: string) : boolean {
     return validString(addl);;
 }
 
+// Validates license
 const validLicense = function validLicense(lice: string) : boolean {
     return validLicenses.includes(lice);
 }
 
+// Validates created
 const validCreated = function validCreated(created: string) : boolean {
     return validDate(created);
 }
 
+// Validates pushed
 const validPushed = function validPushed(pushed: string) : boolean {
     return validDate(pushed);
-}
-
-const validUpdated = function validUpdated(updated: string) : boolean {
-    return validDate(updated);
 }
 
 const validMirror = function validMirror(mirr: boolean | string) : boolean {
@@ -125,7 +133,6 @@ const validators : Validators = {
     stars: validStars,
     created: validCreated,
     pushed: validPushed,
-    updated: validUpdated,
     language: validLang,
     topic: validTopic,
     topics: validTopics,
@@ -223,7 +230,6 @@ export {
     validSize,
     validCreated,
     validPushed,
-    validUpdated,
     validLang,
     validTopic,
     validTopics,
