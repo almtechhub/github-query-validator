@@ -392,11 +392,11 @@ declare const validArchived: (arch: string | boolean) => boolean;
 ```
 
 ```javascript
-import { validMirror } from "github-query-validator";
-validMirror(true); // true
-validMirror(false); // true
-validMirror("false"); // true
-validMirror("07/12"); // false
+import { validArchived } from "github-query-validator";
+validArchived(true); // true
+validArchived(false); // true
+validArchived("false"); // true
+validArchived("07/12"); // false
 ```
 
 ### validIs
