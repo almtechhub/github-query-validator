@@ -413,20 +413,6 @@ validIs("public"); // true
 validIs("07/12"); // false
 ```
 
-### validIs
-
-Validates the 'is' property for github api queries. Takes one of 'public' or 'private'.
-
-```typescript
-declare const validIs: (is: string) => boolean;
-```
-
-```javascript
-import { validIs } from "github-query-validator";
-validIs("public"); // true
-validIs("07/12"); // false
-```
-
 ### validKey
 
 Validates a property as valid
