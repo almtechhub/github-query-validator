@@ -94,7 +94,7 @@ declare const queryStringToObj: (q: string) => QueryObject;
 ```javascript
 import { queryStringToObj } from "github-query-validator";
 queryStringToObj("Query String user:user1 org:user1");
-// const qObj = {
+//{
 //     addl: "Query String",
 //     user: "user1",
 //     org: "user1"
