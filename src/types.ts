@@ -29,7 +29,6 @@ export interface Validators {
     stars: Function;
     created: Function;
     pushed: Function;
-    updated: Function;
     language: Function;
     topic: Function;
     topics: Function;
