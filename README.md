@@ -317,8 +317,8 @@ declare const validAddl: (addl: string) => boolean;
 
 ```javascript
 import { validAddl } from "github-query-validator";
-validAddl("c++"); // true
-validAddl("python"); // true
+validAddl("Query String"); // true
+validAddl("react"); // true
 validAddl(3); // false
 ```
 
