@@ -103,27 +103,33 @@ const validPushed = function validPushed(pushed: string) : boolean {
     return validDate(pushed);
 }
 
+// Validates mirror
 const validMirror = function validMirror(mirr: boolean | string) : boolean {
     return validBool(mirr);
 }
 
+// Validates archived
 const validArchived = function validArchived(arch: boolean | string) : boolean {
     return validBool(arch);
 }
 
+// Validates is
 const validIs = function validIs(is: string) : boolean {
     return (is === "public") || (is === "private");
 }
 
+// Validates key
 const validKey = function validKey(key: string) : boolean {
     if(key[0] === "-") return validProps.includes(key.slice(1, key.length));
     return validProps.includes(key);
 }
 
+// Validates all keys on object
 const validKeys = function validKeys(qObj: QueryObject) : boolean {
     return Object.keys(qObj).every(e => validKey(e));
 }
 
+// validators stored on object as their key name for easy validation
 const validators : Validators = {
     user: validUserName,
     org: validOrgName,
@@ -143,7 +149,8 @@ const validators : Validators = {
     addl: validAddl
 }
 
-const valids : { [key: string] : string } = {
+// strings used for reporting issues in key value
+const valids : { [key: string]: string } = {
     user:    "38 character alphanumeric strings that do not begin with dashes, \n\tie: git-name but not -git-name",
     org:     "38 character alphanumeric strings that do not begin with dashes, \n\tie: git-name but not -git-name",
     in:      "One of: description, name, readme",
@@ -163,11 +170,12 @@ const valids : { [key: string] : string } = {
     addl: "Must be a valid string"
 }
 
+// function to fully validate an object
 const queryObjValidator = function queryObjValidator(qObj: QueryObject, throwOnErr: boolean = true) : boolean {
     for(const x in qObj) {
         if(!validKey(x)) {
             if(throwOnErr) {
-                throw new Error(`Invalid query prop, Prop: ${x}.`);
+                throw new Error(`Invalid query prop, Prop: ${x}. \n\tValid Props: \n\t\t${validProps.join(",\n\t\t") }`);
             } else {
                 return false;
             }
@@ -184,11 +192,14 @@ const queryObjValidator = function queryObjValidator(qObj: QueryObject, throwOnE
     return true;
 }
 
+// function to validate a query string splits the string
+// into a queryObject first then uses the object validation method
 const queryValidator = function queryValidator(q: string, throwOnErr: boolean = true) : boolean {
     const qObj = queryStringToObj(q);
     return queryObjValidator(qObj as QueryObject);
 }
 
+// function to turn a query object to a query string
 const queryObjToString = function queryObjToString(qObj: QueryObject, throwOnErr: boolean = true) : string {
     if(!queryObjValidator(qObj)) return "INVALID OBJECT";
     let str = "";
@@ -203,6 +214,7 @@ const queryObjToString = function queryObjToString(qObj: QueryObject, throwOnErr
     return str;
 }
 
+// function to turn a query string into a QueryObject   
 const queryStringToObj = function queryStringToObj(q: string) : QueryObject {
     const split = q.split(" ");
     const qObj : { [key: string] : string } = {};
