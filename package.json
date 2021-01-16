@@ -1,6 +1,6 @@
 {
   "name": "github-query-validator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A set of functions that will thoroughly validate a github api query.",
   "main": "dist/QueryValidator.js",
   "types" : "dist/QueryValidator.d.ts",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ALMaclaine/github-query-validator.git"
+    "url": "git+https://github.com/almtechhub/github-query-validator.git"
   },
   "keywords": [
     "Github",
@@ -25,9 +25,9 @@
   "author": "Alessandro Maclaine",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ALMaclaine/github-query-validator/issues"
+    "url": "https://github.com/almtechhub/github-query-validator/issues"
   },
-  "homepage": "https://github.com/ALMaclaine/github-query-validator#readme",
+  "homepage": "https://github.com/almtechhub/github-query-validator#readme",
   "devDependencies": {
     "typescript": "^2.9.2",
     "@types/jest": "^23.3.0",
